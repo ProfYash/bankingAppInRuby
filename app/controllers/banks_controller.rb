@@ -1,6 +1,6 @@
 class BanksController < ApplicationController
+  before_action :authenticate_admin_user!, only: [:new, :create, :edit, :show, :index]
   before_action :set_bank, only: %i[ show edit update destroy ]
-
   # GET /banks or /banks.json
   def index
     @banks = Bank.all
@@ -58,13 +58,22 @@ class BanksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bank
-      @bank = Bank.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def bank_params
-      params.require(:bank).permit(:bank_name, :bank_abbrv, :total_balance)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bank
+    @bank = Bank.eager_load(:accounts).includes(:user).find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def bank_params
+    params.require(:bank).permit(:bank_name, :bank_abbrv, :total_balance)
+  end
+
+  def authenticate_admin_user!
+    puts current_user.inspect
+    if !current_user.is_admin
+      puts "?????authenticate_admin_user???if??????????"
+      redirect_to root_path
     end
+  end
 end

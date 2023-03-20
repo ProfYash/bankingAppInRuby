@@ -3,20 +3,16 @@
     <strong>Account nick name:</strong>
     <%= account.account_nick_name %>
   </p>
-
   <p>
     <strong>Balance:</strong>
     <%= account.balance %>
   </p>
-
   <p>
     <strong>Bank:</strong>
-    <%= account.bank_id %>
+    <%= account.bank.bank_name %>
   </p>
-
   <p>
     <strong>User:</strong>
-    <%= account.user_id %>
+    <%= current_user.fullname %>
   </p>
-
 </div>

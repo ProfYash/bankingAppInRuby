@@ -1,10 +1,43 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @bank %>
-
+<div id="<%= dom_id @bank %>">
+  <p>
+    <strong>Bank name:</strong>
+    <%= @bank.bank_name %>
+  </p>
+  <p>
+    <strong>Bank abbrv:</strong>
+    <%= @bank.bank_abbrv %>
+  </p>
+  <p>
+    <strong>Total balance:</strong>
+    <%= @bank.total_balance %>
+  </p>
+  <p>
+    <div id="banks">
+      <% @bank.accounts.each do |account| %>
+        <p>
+          <strong>Account nick name:</strong>
+          <%= account.account_nick_name %>
+        </p>
+        <p>
+          <strong>Balance:</strong>
+          <%= account.balance %>
+        </p>
+        <p>
+          <strong>Bank:</strong>
+          <%= account.bank.bank_name %>
+        </p>
+        <p>
+          <strong>User:</strong>
+          <%= current_user.fullname %>
+        </p>
+      <% end %>
+    </div>
+  </p>
+</div>
+<hr>
 <div>
   <%= link_to "Edit this bank", edit_bank_path(@bank) %> |
   <%= link_to "Back to banks", banks_path %>
-
   <%= button_to "Destroy this bank", @bank, method: :delete %>
 </div>

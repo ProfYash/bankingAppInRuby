@@ -14,9 +14,12 @@
             <li class="nav-item">
               <%= link_to 'Add Bank', new_bank_path,class:"nav-link" %>
             </li>
+            <li class="nav-item">
+              <%= link_to 'Show Banks', banks_path,class:"nav-link" %>
+            </li>
           <%end%>
           <li class="nav-item">
-            <%= link_to 'Show Banks', banks_path,class:"nav-link" %>
+            <%= link_to 'Create Account', new_account_path,class:"nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Sign out", url_for(controller: 'users/sessions', action: 'destroy', authenticity_token: form_authenticity_token), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?"},class:'nav-link' %>
@@ -27,6 +30,11 @@
           </li>
         <%end%>
       </ul>
+      <%if user_signed_in?%>
+        <form class="d-flex" role="search">
+          <button class="btn btn-outline-success" type="submit">Total Balance: <%= current_user.total_balance%></button>
+        </form>
+      <%end%>
     </div>
   </div>
 </nav>

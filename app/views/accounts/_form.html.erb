@@ -2,7 +2,6 @@
   <% if account.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
-
       <ul>
         <% account.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,27 +9,14 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :account_nick_name, style: "display: block" %>
     <%= form.text_field :account_nick_name %>
   </div>
-
   <div>
-    <%= form.label :balance, style: "display: block" %>
-    <%= form.text_field :balance %>
+    <%= form.label :bank_id %>
+    <%= form.select :bank_id, options_for_select(Bank.all.map { |b| [b.bank_abbrv, b.id] }) %>
   </div>
-
-  <div>
-    <%= form.label :bank_id, style: "display: block" %>
-    <%= form.number_field :bank_id %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
-  </div>
-
   <div>
     <%= form.submit %>
   </div>
