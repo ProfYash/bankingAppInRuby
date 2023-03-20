@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <%= link_to 'Bank App', accounts_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <%if user_signed_in?%>
+          <%if current_user.is_admin%>
+            <li class="nav-item">
+              <%= link_to 'Add User', new_user_registration_path,class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Add Bank', new_bank_path,class:"nav-link" %>
+            </li>
+          <%end%>
+          <li class="nav-item">
+            <%= link_to 'Show Banks', banks_path,class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign out", url_for(controller: 'users/sessions', action: 'destroy', authenticity_token: form_authenticity_token), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?"},class:'nav-link' %>
+          </li>
+        <%else%>
+          <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path,class:"nav-link" %>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</nav>

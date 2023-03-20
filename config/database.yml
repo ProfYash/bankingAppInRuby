@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: bankingAppinRuby_development
+  username: postgres
+  password: root
+
+
+test:
+  <<: *default
+  database: bankingAppinRuby_test
+  username: postgres
+  password: root
+
+production:
+  <<: *default
+  database: bankingAppinRuby_production
+  username: postgres
+  password: root
