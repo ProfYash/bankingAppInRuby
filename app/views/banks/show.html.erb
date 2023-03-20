@@ -2,19 +2,19 @@
 <div id="<%= dom_id @bank %>">
   <p>
     <strong>Bank name:</strong>
-    <%= @bank.bank_name %>
+    <%= @bank1.bank_name %>
   </p>
   <p>
     <strong>Bank abbrv:</strong>
-    <%= @bank.bank_abbrv %>
+    <%= @bank1.bank_abbrv %>
   </p>
   <p>
     <strong>Total balance:</strong>
-    <%= @bank.total_balance %>
+    <%= @bank1.total_balance %>
   </p>
   <p>
     <div id="banks">
-      <% @bank.accounts.each do |account| %>
+      <% @accounts.each do |account| %>
         <p>
           <strong>Account nick name:</strong>
           <%= account.account_nick_name %>
@@ -29,7 +29,7 @@
         </p>
         <p>
           <strong>User:</strong>
-          <%= current_user.fullname %>
+          <%= account.user.fullname %>
         </p>
       <% end %>
     </div>

@@ -62,6 +62,8 @@ class BanksController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_bank
     @bank = Bank.eager_load(:accounts).find(params[:id])
+    @bank1 = Bank.find(params[:id])
+    @accounts = @bank1.accounts.includes(:user)
   end
 
   # Only allow a list of trusted parameters through.
