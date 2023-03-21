@@ -1,0 +1,11 @@
+<h1>Make a Deposit</h1>
+<% if notice %>
+  <p><%= notice %></p>
+<% end %>
+<%= form_tag deposit_account_path(@account), method: :post do %>
+  <div>
+    <%= label_tag :deposit_amount, "Deposit Amount" %>
+    <%= text_field_tag :deposit_amount %>
+  </div>
+  <%= submit_tag "Make Deposit" %>
+<% end %>

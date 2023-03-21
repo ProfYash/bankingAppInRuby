@@ -1,0 +1,15 @@
+<h1>Make a Transfer</h1>
+<% if notice %>
+  <p><%= notice %></p>
+<% end %>
+<%= form_tag transfer_account_path(@account), method: :post do  %>
+  <div>
+    <%= label_tag :withdraw_amount, "Transfer Amount" %>
+    <%= text_field_tag :withdraw_amount %>
+  </div>
+  <div>
+    <%= label_tag :account_nick_name %>
+    <%= select_tag :account_nick_name, options_for_select(Account.all.map { |a| [a.account_nick_name, a.account_nick_name] }) %>
+  </div>
+  <%= submit_tag "Make Transfer" %>
+<% end %>

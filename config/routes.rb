@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :accounts
+  resources :accounts do
+    post "deposit", on: :member
+    post "withdraw", on: :member
+    post "transfer", on: :member
+  end
   resources :banks
   devise_for :users, controllers: {
                        sessions: "users/sessions",

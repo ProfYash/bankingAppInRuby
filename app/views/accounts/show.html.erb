@@ -1,7 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @account %>
-
+<%= render 'accounts/deposit'%>
+<%= render 'accounts/withdraw'%>
+<%= render 'accounts/transfer'%>
 <div>
   <%= link_to "Edit this account", edit_account_path(@account) %> |
   <%= link_to "Back to accounts", accounts_path %>

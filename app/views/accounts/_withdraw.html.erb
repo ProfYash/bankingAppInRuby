@@ -1,0 +1,14 @@
+<h1>Make a Withdraw</h1>
+
+<% if notice %>
+  <p><%= notice %></p>
+<% end %>
+
+<%= form_tag withdraw_account_path(@account), method: :post do %>
+  <div>
+    <%= label_tag :withdraw_amount, "Withdraw Amount" %>
+    <%= text_field_tag :withdraw_amount %>
+  </div>
+
+  <%= submit_tag "Make Withdraw" %>
+<% end %>
